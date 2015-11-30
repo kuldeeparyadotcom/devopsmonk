@@ -1,0 +1,7 @@
+name             'list'
+maintainer       'YOUR_NAME'
+maintainer_email 'YOUR_EMAIL'
+license          'All rights reserved'
+description      'Installs/Configures list'
+long_description 'Installs/Configures list'
+version          '0.1.0'
