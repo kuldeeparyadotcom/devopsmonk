@@ -9,6 +9,6 @@
 bash 'build_docker_image' do
   cwd '/opt/Priority/'
   code <<-EOH
-      /opt/Priority/buildDockerImage
+    /opt/Priority/buildDockerImage
     EOH
 end
