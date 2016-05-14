@@ -6,10 +6,11 @@ provisioner:
   name: chef_zero
 
 platforms:
+  - name: ubuntu-14.04
   - name: centos-7.1
 
 suites:
   - name: default
     run_list:
-      - recipe[mydocker::setup_priority_user]
+      - recipe[jenkins::default]
     attributes:

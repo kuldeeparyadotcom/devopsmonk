@@ -11,5 +11,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[mydocker::setup_priority_user]
+      - recipe[docker::default]
     attributes:

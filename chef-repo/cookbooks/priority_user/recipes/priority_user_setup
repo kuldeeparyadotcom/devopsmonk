@@ -1,0 +1,24 @@
+#
+# Cookbook Name:: priority_user
+# Recipe:: priority_user_setup 
+#
+# Copyright (C) 2015 YOUR_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
+
+user 'priority' do
+  comment 'priority app user'
+  home '/home/priority'
+  shell '/bin/bash'
+  password 'priority'
+  notifies :run, 'bash[grant sudo access]', :immediately
+end
+
+bash 'grant sudo access' do
+  code <<-EOH
+    gpasswd -a priority wheel
+    echo "priority       ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  EOH
+  action :nothing
+end
