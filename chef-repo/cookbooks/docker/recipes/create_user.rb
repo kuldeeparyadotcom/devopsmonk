@@ -19,6 +19,6 @@ user_shell=node.default['docker']['user_shell']
 
 execute 'create_user' do
   command "sudo useradd -md #{user_home} -s #{user_shell} #{user}"
-  only_if "node['etc']['passwd'][#{user}]"
+  not_if { str = `cat /etc/passwd | grep "#{user}"`; str.split(":").first == "#{user}" }
   notifies :reload, 'ohai[reload_passwd]', :immediately
 end

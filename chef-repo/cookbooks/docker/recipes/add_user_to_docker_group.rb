@@ -11,6 +11,6 @@
 user=node.default['docker']['user']
 execute "add_user_to_docker_group" do
   command "sudo usermod -aG docker #{user}"
-  not_if "node['etc']['passwd'][#{user}]"
-  only_if { str = `id "#{user}"`; str.empty? }
+  not_if { str = `id -Gn "#{user}"`; str.split.include?("docker") }
+  only_if { str = `cat /etc/passwd | grep "#{user}"`; str.split(":").first == "#{user}" }
 end
