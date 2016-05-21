@@ -14,7 +14,7 @@
 
 cloned_dir = File.join(node.default['souls4society']['user_home'], node.default['souls4society']['app_name'])
 
-git node.default['souls4society']['user_home']['app_name'] do
+git "#{node.default['souls4society']['user_home']}/#{node.default['souls4society']['app_name']}" do
   repository node.default['souls4society']['repository']
   revision node.default['souls4society']['revision']
   action :sync
