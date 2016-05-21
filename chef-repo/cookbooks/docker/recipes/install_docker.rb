@@ -16,3 +16,7 @@ script 'docker_installation' do
   EOH
   not_if { ::File.exist?("/usr/bin/docker") }
 end
+
+service "docker" do
+  action :start
+end
